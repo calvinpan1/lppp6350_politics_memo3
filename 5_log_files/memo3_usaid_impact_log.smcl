@@ -1,0 +1,358 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/calvin/Library/Mobile Documents/com~apple~CloudDocs/Documents/Calvin/UVA/2026-27/LPPP 6350 Politics/stata/5_log_files/memo3_usaid_impact_log.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}10 Nov 2026, 13:53:26
+{txt}
+{com}. 
+. 
+. ********
+. *
+. *       1. Open data
+. *
+. ********
+. 
+.         **The iPoll microdata are not public, so this reads the published weighted
+.         **crosstabs rather than respondent-level data. Question wording, study
+.         **details and the source of each number are in
+.         **"${c -(}rawdatapath{c )-}kff_apr2026_usaid_party_source.txt".
+.         import delimited using "${c -(}rawdatapath{c )-}kff_apr2026_usaid_party.csv", ///
+>                 varnames(1) stringcols(2 3 4) clear
+{res}{txt}(encoding automatically selected: ISO-8859-1)
+{res}{text}(9 vars, 12 obs)
+
+{com}. 
+.         list, noobs abbreviate(14)
+
+  {txt}{c TLC}{hline 10}{c TT}{hline 15}{c TT}{hline 32}{c TT}{hline 13}{c TRC}
+  {c |} question {c |} variable_name {c |}                          topic {c |}       party {c |}
+  {c |} {res}      42 {txt}{c |} {res}        Q22_A {txt}{c |} {res}       The U.S. budget deficit {txt}{c |} {res}   Democrat {txt}{c |}
+  {c LT}{hline 10}{c BT}{hline 1}{c TT}{hline 13}{c +}{hline 14}{c TT}{hline 14}{c TT}{hline 2}{c BT}{hline 13}{c RT}
+  {c |}  positive  {c |}  negative   {c |}  no_impact   {c |}  dont_know   {c |}  respondents   {c |}
+  {c |}  {res}      10  {txt}{c |}  {res}      49   {txt}{c |}  {res}       41   {txt}{c |}  {res}        0   {txt}{c |}  {res}        420   {txt}{c |}
+  {c BLC}{hline 12}{c BT}{hline 13}{c BT}{hline 14}{c BT}{hline 14}{c BT}{hline 16}{c BRC}
+
+  {c TLC}{hline 10}{c TT}{hline 15}{c TT}{hline 32}{c TT}{hline 13}{c TRC}
+  {c |} question {c |} variable_name {c |}                          topic {c |}       party {c |}
+  {c |} {res}      42 {txt}{c |} {res}        Q22_A {txt}{c |} {res}       The U.S. budget deficit {txt}{c |} {res}Independent {txt}{c |}
+  {c LT}{hline 10}{c BT}{hline 1}{c TT}{hline 13}{c +}{hline 14}{c TT}{hline 14}{c TT}{hline 2}{c BT}{hline 13}{c RT}
+  {c |}  positive  {c |}  negative   {c |}  no_impact   {c |}  dont_know   {c |}  respondents   {c |}
+  {c |}  {res}      24  {txt}{c |}  {res}      33   {txt}{c |}  {res}       42   {txt}{c |}  {res}        1   {txt}{c |}  {res}        450   {txt}{c |}
+  {c BLC}{hline 12}{c BT}{hline 13}{c BT}{hline 14}{c BT}{hline 14}{c BT}{hline 16}{c BRC}
+
+  {c TLC}{hline 10}{c TT}{hline 15}{c TT}{hline 32}{c TT}{hline 13}{c TRC}
+  {c |} question {c |} variable_name {c |}                          topic {c |}       party {c |}
+  {c |} {res}      42 {txt}{c |} {res}        Q22_A {txt}{c |} {res}       The U.S. budget deficit {txt}{c |} {res} Republican {txt}{c |}
+  {c LT}{hline 10}{c BT}{hline 1}{c TT}{hline 13}{c +}{hline 14}{c TT}{hline 14}{c TT}{hline 2}{c BT}{hline 13}{c RT}
+  {c |}  positive  {c |}  negative   {c |}  no_impact   {c |}  dont_know   {c |}  respondents   {c |}
+  {c |}  {res}      66  {txt}{c |}  {res}      16   {txt}{c |}  {res}       18   {txt}{c |}  {res}        1   {txt}{c |}  {res}        372   {txt}{c |}
+  {c BLC}{hline 12}{c BT}{hline 13}{c BT}{hline 14}{c BT}{hline 14}{c BT}{hline 16}{c BRC}
+
+  {c TLC}{hline 10}{c TT}{hline 15}{c TT}{hline 32}{c TT}{hline 13}{c TRC}
+  {c |} question {c |} variable_name {c |}                          topic {c |}       party {c |}
+  {c |} {res}      42 {txt}{c |} {res}        Q22_A {txt}{c |} {res}       The U.S. budget deficit {txt}{c |} {res} All adults {txt}{c |}
+  {c LT}{hline 10}{c BT}{hline 1}{c TT}{hline 13}{c +}{hline 14}{c TT}{hline 14}{c TT}{hline 2}{c BT}{hline 13}{c RT}
+  {c |}  positive  {c |}  negative   {c |}  no_impact   {c |}  dont_know   {c |}  respondents   {c |}
+  {c |}  {res}      32  {txt}{c |}  {res}      33   {txt}{c |}  {res}       34   {txt}{c |}  {res}        1   {txt}{c |}  {res}       1242   {txt}{c |}
+  {c BLC}{hline 12}{c BT}{hline 13}{c BT}{hline 14}{c BT}{hline 14}{c BT}{hline 16}{c BRC}
+
+  {c TLC}{hline 10}{c TT}{hline 15}{c TT}{hline 32}{c TT}{hline 13}{c TRC}
+  {c |} question {c |} variable_name {c |}                          topic {c |}       party {c |}
+  {c |} {res}      44 {txt}{c |} {res}        Q22_C {txt}{c |} {res}Health in developing countries {txt}{c |} {res}   Democrat {txt}{c |}
+  {c LT}{hline 10}{c BT}{hline 1}{c TT}{hline 13}{c +}{hline 14}{c TT}{hline 14}{c TT}{hline 2}{c BT}{hline 13}{c RT}
+  {c |}  positive  {c |}  negative   {c |}  no_impact   {c |}  dont_know   {c |}  respondents   {c |}
+  {c |}  {res}       4  {txt}{c |}  {res}      86   {txt}{c |}  {res}       10   {txt}{c |}  {res}        0   {txt}{c |}  {res}        420   {txt}{c |}
+  {c BLC}{hline 12}{c BT}{hline 13}{c BT}{hline 14}{c BT}{hline 14}{c BT}{hline 16}{c BRC}
+
+  {c TLC}{hline 10}{c TT}{hline 15}{c TT}{hline 32}{c TT}{hline 13}{c TRC}
+  {c |} question {c |} variable_name {c |}                          topic {c |}       party {c |}
+  {c |} {res}      44 {txt}{c |} {res}        Q22_C {txt}{c |} {res}Health in developing countries {txt}{c |} {res}Independent {txt}{c |}
+  {c LT}{hline 10}{c BT}{hline 1}{c TT}{hline 13}{c +}{hline 14}{c TT}{hline 14}{c TT}{hline 2}{c BT}{hline 13}{c RT}
+  {c |}  positive  {c |}  negative   {c |}  no_impact   {c |}  dont_know   {c |}  respondents   {c |}
+  {c |}  {res}      10  {txt}{c |}  {res}      61   {txt}{c |}  {res}       29   {txt}{c |}  {res}        0   {txt}{c |}  {res}        450   {txt}{c |}
+  {c BLC}{hline 12}{c BT}{hline 13}{c BT}{hline 14}{c BT}{hline 14}{c BT}{hline 16}{c BRC}
+
+  {c TLC}{hline 10}{c TT}{hline 15}{c TT}{hline 32}{c TT}{hline 13}{c TRC}
+  {c |} question {c |} variable_name {c |}                          topic {c |}       party {c |}
+  {c |} {res}      44 {txt}{c |} {res}        Q22_C {txt}{c |} {res}Health in developing countries {txt}{c |} {res} Republican {txt}{c |}
+  {c LT}{hline 10}{c BT}{hline 1}{c TT}{hline 13}{c +}{hline 14}{c TT}{hline 14}{c TT}{hline 2}{c BT}{hline 13}{c RT}
+  {c |}  positive  {c |}  negative   {c |}  no_impact   {c |}  dont_know   {c |}  respondents   {c |}
+  {c |}  {res}      28  {txt}{c |}  {res}      30   {txt}{c |}  {res}       42   {txt}{c |}  {res}        0   {txt}{c |}  {res}        372   {txt}{c |}
+  {c BLC}{hline 12}{c BT}{hline 13}{c BT}{hline 14}{c BT}{hline 14}{c BT}{hline 16}{c BRC}
+
+  {c TLC}{hline 10}{c TT}{hline 15}{c TT}{hline 32}{c TT}{hline 13}{c TRC}
+  {c |} question {c |} variable_name {c |}                          topic {c |}       party {c |}
+  {c |} {res}      44 {txt}{c |} {res}        Q22_C {txt}{c |} {res}Health in developing countries {txt}{c |} {res} All adults {txt}{c |}
+  {c LT}{hline 10}{c BT}{hline 1}{c TT}{hline 13}{c +}{hline 14}{c TT}{hline 14}{c TT}{hline 2}{c BT}{hline 13}{c RT}
+  {c |}  positive  {c |}  negative   {c |}  no_impact   {c |}  dont_know   {c |}  respondents   {c |}
+  {c |}  {res}      14  {txt}{c |}  {res}      59   {txt}{c |}  {res}       27   {txt}{c |}  {res}        0   {txt}{c |}  {res}       1242   {txt}{c |}
+  {c BLC}{hline 12}{c BT}{hline 13}{c BT}{hline 14}{c BT}{hline 14}{c BT}{hline 16}{c BRC}
+
+  {c TLC}{hline 10}{c TT}{hline 15}{c TT}{hline 32}{c TT}{hline 13}{c TRC}
+  {c |} question {c |} variable_name {c |}                          topic {c |}       party {c |}
+  {c |} {res}      45 {txt}{c |} {res}        Q22_D {txt}{c |} {res}   How the world sees the U.S. {txt}{c |} {res}   Democrat {txt}{c |}
+  {c LT}{hline 10}{c BT}{hline 1}{c TT}{hline 13}{c +}{hline 14}{c TT}{hline 14}{c TT}{hline 2}{c BT}{hline 13}{c RT}
+  {c |}  positive  {c |}  negative   {c |}  no_impact   {c |}  dont_know   {c |}  respondents   {c |}
+  {c |}  {res}       5  {txt}{c |}  {res}      86   {txt}{c |}  {res}        8   {txt}{c |}  {res}        0   {txt}{c |}  {res}        420   {txt}{c |}
+  {c BLC}{hline 12}{c BT}{hline 13}{c BT}{hline 14}{c BT}{hline 14}{c BT}{hline 16}{c BRC}
+
+  {c TLC}{hline 10}{c TT}{hline 15}{c TT}{hline 32}{c TT}{hline 13}{c TRC}
+  {c |} question {c |} variable_name {c |}                          topic {c |}       party {c |}
+  {c |} {res}      45 {txt}{c |} {res}        Q22_D {txt}{c |} {res}   How the world sees the U.S. {txt}{c |} {res}Independent {txt}{c |}
+  {c LT}{hline 10}{c BT}{hline 1}{c TT}{hline 13}{c +}{hline 14}{c TT}{hline 14}{c TT}{hline 2}{c BT}{hline 13}{c RT}
+  {c |}  positive  {c |}  negative   {c |}  no_impact   {c |}  dont_know   {c |}  respondents   {c |}
+  {c |}  {res}       9  {txt}{c |}  {res}      68   {txt}{c |}  {res}       23   {txt}{c |}  {res}        0   {txt}{c |}  {res}        450   {txt}{c |}
+  {c BLC}{hline 12}{c BT}{hline 13}{c BT}{hline 14}{c BT}{hline 14}{c BT}{hline 16}{c BRC}
+
+  {c TLC}{hline 10}{c TT}{hline 15}{c TT}{hline 32}{c TT}{hline 13}{c TRC}
+  {c |} question {c |} variable_name {c |}                          topic {c |}       party {c |}
+  {c |} {res}      45 {txt}{c |} {res}        Q22_D {txt}{c |} {res}   How the world sees the U.S. {txt}{c |} {res} Republican {txt}{c |}
+  {c LT}{hline 10}{c BT}{hline 1}{c TT}{hline 13}{c +}{hline 14}{c TT}{hline 14}{c TT}{hline 2}{c BT}{hline 13}{c RT}
+  {c |}  positive  {c |}  negative   {c |}  no_impact   {c |}  dont_know   {c |}  respondents   {c |}
+  {c |}  {res}      28  {txt}{c |}  {res}      40   {txt}{c |}  {res}       32   {txt}{c |}  {res}        1   {txt}{c |}  {res}        372   {txt}{c |}
+  {c BLC}{hline 12}{c BT}{hline 13}{c BT}{hline 14}{c BT}{hline 14}{c BT}{hline 16}{c BRC}
+
+  {c TLC}{hline 10}{c TT}{hline 15}{c TT}{hline 32}{c TT}{hline 13}{c TRC}
+  {c |} question {c |} variable_name {c |}                          topic {c |}       party {c |}
+  {c |} {res}      45 {txt}{c |} {res}        Q22_D {txt}{c |} {res}   How the world sees the U.S. {txt}{c |} {res} All adults {txt}{c |}
+  {c LT}{hline 10}{c BT}{hline 1}{c TT}{hline 13}{c +}{hline 14}{c TT}{hline 14}{c TT}{hline 2}{c BT}{hline 13}{c RT}
+  {c |}  positive  {c |}  negative   {c |}  no_impact   {c |}  dont_know   {c |}  respondents   {c |}
+  {c |}  {res}      14  {txt}{c |}  {res}      65   {txt}{c |}  {res}       21   {txt}{c |}  {res}        0   {txt}{c |}  {res}       1242   {txt}{c |}
+  {c BLC}{hline 12}{c BT}{hline 13}{c BT}{hline 14}{c BT}{hline 14}{c BT}{hline 16}{c BRC}
+
+{com}. 
+.         **"All adults" stays in the raw file for the memo text; the figure contrasts
+.         **the three party groups
+.         drop if party == "All adults"
+{txt}(3 observations deleted)
+
+{com}. 
+.         rename topic    topic_name
+{res}{txt}
+{com}.         rename party    party_name
+{res}{txt}
+{com}. 
+. 
+. ********
+. *
+. *       2. Label topics and parties
+. *
+. ********
+. 
+.         **Short x-axis labels, in the order the battery was asked
+.         gen byte topic = .
+{txt}(9 missing values generated)
+
+{com}.         replace topic = 1 if question == 42
+{txt}(3 real changes made)
+
+{com}.         replace topic = 2 if question == 44
+{txt}(3 real changes made)
+
+{com}.         replace topic = 3 if question == 45
+{txt}(3 real changes made)
+
+{com}. 
+.         label define topic      1 "The U.S. budget deficit"                     ///
+>                                                 2 "Health in developing countries"      ///
+>                                                 3 "How the world sees the U.S."
+{txt}
+{com}.         label values topic topic
+{txt}
+{com}.         label variable topic "USAID changes have had an impact on..."
+{txt}
+{com}. 
+.         **Party identification from question 48; leaners (question 49) are not folded in
+.         gen byte party = .
+{txt}(9 missing values generated)
+
+{com}.         replace party = 1 if party_name == "Democrat"
+{txt}(3 real changes made)
+
+{com}.         replace party = 2 if party_name == "Independent"
+{txt}(3 real changes made)
+
+{com}.         replace party = 3 if party_name == "Republican"
+{txt}(3 real changes made)
+
+{com}. 
+.         label define party 1 "Democrat" 2 "Independent" 3 "Republican"
+{txt}
+{com}.         label values party party
+{txt}
+{com}.         label variable party "Party identification"
+{txt}
+{com}. 
+.         label variable negative  "Negative impact"
+{txt}
+{com}.         label variable no_impact "No impact"
+{txt}
+{com}.         label variable positive  "Positive impact"
+{txt}
+{com}. 
+.         **One row per topic x party, as graph bar (asis) requires
+.         isid topic party
+{txt}
+{com}.         sort topic party
+{txt}
+{com}. 
+. 
+. ********
+. *
+. *       3. Figure of impact by topic and party
+. *
+. ********
+. 
+.         **Segments stack bottom to top in the order listed: negative, no impact,
+.         **positive. Don't know and refused run from 0 to 1 percent and are left out,
+.         **so a few bars stop at 99 rather than 100.
+.         graph bar (asis) negative no_impact positive,                                                   ///
+>                 over(party, label(labsize(vsmall) angle(45)))                                           ///
+>                 over(topic, label(labsize(small)) gap(90))                                                      ///
+>                 stack                                                                                                                           ///
+>                 bar(1, color("178 24 43"))                                                                                      ///
+>                 bar(2, color("150 150 150"))                                                                            ///
+>                 bar(3, color("33 102 172"))                                                                                     ///
+>                 blabel(bar, format(%3.0f) position(center) size(vsmall) color(white))   ///
+>                 ytitle("Percent of respondents", size(small))                                           ///
+>                 ylabel(0(20)100, angle(0) labsize(vsmall) grid glcolor(gs14))           ///
+>                 yscale(range(0 100))                                                                                            ///
+>                 title("In your opinion, what kind of impact have changes to"            ///
+>                         "USAID made to...", size(medsmall) span)                                                ///
+>                 note("Source: KFF Poll, April 2026 Health Tracking Poll (Roper #31125187), questions 42, 44 and 45,"    ///
+>                         "crossed by party identification (question 48). Fielded by SSRS, April 14-19, 2026; national"   ///
+>                         "sample of 1,343 U.S. adults, of whom 1,242 give a party ID. Weighted percentages, margin of"   ///
+>                         "error +/- 3 points. Don't know and refused, 1 percent or less in every group, are not shown.", ///
+>                         size(vsmall) span)                                                                                              ///
+>                 legend(order(3 2 1) rows(1) size(vsmall) pos(6) ring(1)                         ///
+>                         region(lstyle(none)) symxsize(4) symysize(3))                                   ///
+>                 graphregion(color(white)) plotregion(color(white))                                      ///
+>                 xsize(9.5) ysize(5.5)                                                                                           ///
+>                 name(usaid_impact, replace)
+{res}{txt}
+{com}. 
+.         graph export "${c -(}tabsfigspath{c )-}memo3_usaid_impact.png", width(2400) replace
+{res}{txt}file {bf:/Users/calvin/Library/Mobile Documents/com~apple~CloudDocs/Documents/Calvin/UVA/2026-27/LPPP 6350 Politics/stata/6_tabsfigs/memo3_usaid_impact.png} written in PNG format
+
+{com}.         graph export "${c -(}tabsfigspath{c )-}memo3_usaid_impact.pdf", replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/calvin/Library/Mobile Documents/com~apple~CloudDocs/Documents/Calvin/UVA/2026-27/LPPP 6350 Politics/stata/6_tabsfigs/memo3_usaid_impact.pdf{rm}
+saved as
+PDF
+format
+{p_end}
+
+{com}. 
+. 
+. ********
+. *
+. *       4. Export the plotted numbers
+. *
+. ********
+. 
+.         **The figure and this table come from the same rows, so the memo text and the
+.         **bars cannot drift apart
+.         keep question variable_name topic party positive negative no_impact ///
+>                 dont_know respondents
+{txt}
+{com}.         order question variable_name topic party positive negative no_impact ///
+>                 dont_know respondents
+{txt}
+{com}. 
+.         list topic party positive negative no_impact dont_know respondents, ///
+>                 sepby(topic) noobs abbreviate(12)
+
+  {txt}{c TLC}{hline 32}{c TT}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |}                          topic {c |}       party {c |} positive {c |} negative {c |}
+  {c |} {res}       The U.S. budget deficit {txt}{c |} {res}   Democrat {txt}{c |} {res}      10 {txt}{c |} {res}      49 {txt}{c |}
+  {c LT}{hline 21}{c TT}{hline 10}{c BT}{hline 10}{c TT}{hline 2}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}      no_impact      {c |}      dont_know      {c |}      respondents       {c |}
+  {c |}      {res}       41      {txt}{c |}      {res}        0      {txt}{c |}      {res}        420       {txt}{c |}
+  {c BLC}{hline 21}{c BT}{hline 21}{c BT}{hline 24}{c BRC}
+
+  {c TLC}{hline 32}{c TT}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |}                          topic {c |}       party {c |} positive {c |} negative {c |}
+  {c |} {res}       The U.S. budget deficit {txt}{c |} {res}Independent {txt}{c |} {res}      24 {txt}{c |} {res}      33 {txt}{c |}
+  {c LT}{hline 21}{c TT}{hline 10}{c BT}{hline 10}{c TT}{hline 2}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}      no_impact      {c |}      dont_know      {c |}      respondents       {c |}
+  {c |}      {res}       42      {txt}{c |}      {res}        1      {txt}{c |}      {res}        450       {txt}{c |}
+  {c BLC}{hline 21}{c BT}{hline 21}{c BT}{hline 24}{c BRC}
+
+  {c TLC}{hline 32}{c TT}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |}                          topic {c |}       party {c |} positive {c |} negative {c |}
+  {c |} {res}       The U.S. budget deficit {txt}{c |} {res} Republican {txt}{c |} {res}      66 {txt}{c |} {res}      16 {txt}{c |}
+  {c LT}{hline 21}{c TT}{hline 10}{c BT}{hline 10}{c TT}{hline 2}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}      no_impact      {c |}      dont_know      {c |}      respondents       {c |}
+  {c |}      {res}       18      {txt}{c |}      {res}        1      {txt}{c |}      {res}        372       {txt}{c |}
+  {c BLC}{hline 21}{c BT}{hline 21}{c BT}{hline 24}{c BRC}
+
+  {c TLC}{hline 32}{c TT}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |}                          topic {c |}       party {c |} positive {c |} negative {c |}
+  {c |} {res}Health in developing countries {txt}{c |} {res}   Democrat {txt}{c |} {res}       4 {txt}{c |} {res}      86 {txt}{c |}
+  {c LT}{hline 21}{c TT}{hline 10}{c BT}{hline 10}{c TT}{hline 2}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}      no_impact      {c |}      dont_know      {c |}      respondents       {c |}
+  {c |}      {res}       10      {txt}{c |}      {res}        0      {txt}{c |}      {res}        420       {txt}{c |}
+  {c BLC}{hline 21}{c BT}{hline 21}{c BT}{hline 24}{c BRC}
+
+  {c TLC}{hline 32}{c TT}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |}                          topic {c |}       party {c |} positive {c |} negative {c |}
+  {c |} {res}Health in developing countries {txt}{c |} {res}Independent {txt}{c |} {res}      10 {txt}{c |} {res}      61 {txt}{c |}
+  {c LT}{hline 21}{c TT}{hline 10}{c BT}{hline 10}{c TT}{hline 2}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}      no_impact      {c |}      dont_know      {c |}      respondents       {c |}
+  {c |}      {res}       29      {txt}{c |}      {res}        0      {txt}{c |}      {res}        450       {txt}{c |}
+  {c BLC}{hline 21}{c BT}{hline 21}{c BT}{hline 24}{c BRC}
+
+  {c TLC}{hline 32}{c TT}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |}                          topic {c |}       party {c |} positive {c |} negative {c |}
+  {c |} {res}Health in developing countries {txt}{c |} {res} Republican {txt}{c |} {res}      28 {txt}{c |} {res}      30 {txt}{c |}
+  {c LT}{hline 21}{c TT}{hline 10}{c BT}{hline 10}{c TT}{hline 2}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}      no_impact      {c |}      dont_know      {c |}      respondents       {c |}
+  {c |}      {res}       42      {txt}{c |}      {res}        0      {txt}{c |}      {res}        372       {txt}{c |}
+  {c BLC}{hline 21}{c BT}{hline 21}{c BT}{hline 24}{c BRC}
+
+  {c TLC}{hline 32}{c TT}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |}                          topic {c |}       party {c |} positive {c |} negative {c |}
+  {c |} {res}   How the world sees the U.S. {txt}{c |} {res}   Democrat {txt}{c |} {res}       5 {txt}{c |} {res}      86 {txt}{c |}
+  {c LT}{hline 21}{c TT}{hline 10}{c BT}{hline 10}{c TT}{hline 2}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}      no_impact      {c |}      dont_know      {c |}      respondents       {c |}
+  {c |}      {res}        8      {txt}{c |}      {res}        0      {txt}{c |}      {res}        420       {txt}{c |}
+  {c BLC}{hline 21}{c BT}{hline 21}{c BT}{hline 24}{c BRC}
+
+  {c TLC}{hline 32}{c TT}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |}                          topic {c |}       party {c |} positive {c |} negative {c |}
+  {c |} {res}   How the world sees the U.S. {txt}{c |} {res}Independent {txt}{c |} {res}       9 {txt}{c |} {res}      68 {txt}{c |}
+  {c LT}{hline 21}{c TT}{hline 10}{c BT}{hline 10}{c TT}{hline 2}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}      no_impact      {c |}      dont_know      {c |}      respondents       {c |}
+  {c |}      {res}       23      {txt}{c |}      {res}        0      {txt}{c |}      {res}        450       {txt}{c |}
+  {c BLC}{hline 21}{c BT}{hline 21}{c BT}{hline 24}{c BRC}
+
+  {c TLC}{hline 32}{c TT}{hline 13}{c TT}{hline 10}{c TT}{hline 10}{c TRC}
+  {c |}                          topic {c |}       party {c |} positive {c |} negative {c |}
+  {c |} {res}   How the world sees the U.S. {txt}{c |} {res} Republican {txt}{c |} {res}      28 {txt}{c |} {res}      40 {txt}{c |}
+  {c LT}{hline 21}{c TT}{hline 10}{c BT}{hline 10}{c TT}{hline 2}{c BT}{hline 10}{c BT}{hline 10}{c RT}
+  {c |}      no_impact      {c |}      dont_know      {c |}      respondents       {c |}
+  {c |}      {res}       32      {txt}{c |}      {res}        1      {txt}{c |}      {res}        372       {txt}{c |}
+  {c BLC}{hline 21}{c BT}{hline 21}{c BT}{hline 24}{c BRC}
+
+{com}. 
+.         export delimited using "${c -(}tabsfigspath{c )-}memo3_usaid_impact.csv", replace
+{res}{txt}file {bf:/Users/calvin/Library/Mobile Documents/com~apple~CloudDocs/Documents/Calvin/UVA/2026-27/LPPP 6350 Politics/stata/6_tabsfigs/memo3_usaid_impact.csv} saved
+
+{com}. 
+. 
+. ********
+. *
+. *       5. Close log file
+. *
+. ********
+. 
+.         log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/calvin/Library/Mobile Documents/com~apple~CloudDocs/Documents/Calvin/UVA/2026-27/LPPP 6350 Politics/stata/5_log_files/memo3_usaid_impact_log.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}10 Nov 2026, 13:53:29
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

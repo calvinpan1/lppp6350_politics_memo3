@@ -1,0 +1,7 @@
+.DS_Store
+*.stswp
+
+# Stata batch-mode logs (stata -b writes these next to the do-file)
+/stata.log
+*.log
+!5_log_files/*.log

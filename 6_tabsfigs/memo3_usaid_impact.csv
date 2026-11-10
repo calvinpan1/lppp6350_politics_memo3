@@ -1,0 +1,10 @@
+question,variable_name,topic,party,positive,negative,no_impact,dont_know,respondents
+42,Q22_A,The U.S. budget deficit,Democrat,10,49,41,0,420
+42,Q22_A,The U.S. budget deficit,Independent,24,33,42,1,450
+42,Q22_A,The U.S. budget deficit,Republican,66,16,18,1,372
+44,Q22_C,Health in developing countries,Democrat,4,86,10,0,420
+44,Q22_C,Health in developing countries,Independent,10,61,29,0,450
+44,Q22_C,Health in developing countries,Republican,28,30,42,0,372
+45,Q22_D,How the world sees the U.S.,Democrat,5,86,8,0,420
+45,Q22_D,How the world sees the U.S.,Independent,9,68,23,0,450
+45,Q22_D,How the world sees the U.S.,Republican,28,40,32,1,372

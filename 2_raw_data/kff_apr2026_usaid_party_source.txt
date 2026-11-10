@@ -1,0 +1,41 @@
+SOURCE OF kff_apr2026_usaid_party.csv
+
+Transcribed 2026_1110 from the Roper iPoll study record for
+KFF Poll: April 2026 Health Tracking Poll [Roper #31125187],
+https://ropercenter.cornell.edu/ipoll/study/31125187/questions
+
+For each of questions 42, 44 and 45 the figures come from the
+"Demographic Crosstabs" tab, "Party ID" panel, with "Include unweighted
+Ns in table" checked. Percentages are weighted (WEIGHT_PID_ADJ);
+Ns are unweighted.
+
+Question wording (common stem):
+	"As you may know, the (Donald) Trump administration has made several
+	changes to the U.S. approach to foreign aid and global health, including
+	decreasing spending and eliminating the U.S. Agency for International
+	Development (USAID). Do you think these changes have had a positive
+	impact, a negative impact, or no impact on..."
+
+	Q42 (Q22_A) ...the U.S. budget deficit?
+	Q43 (Q22_B) ...the ability to keep infectious disease from spreading to
+	            the U.S.?  [not used]
+	Q44 (Q22_C) ...the health of people in developing countries?
+	Q45 (Q22_D) ...how people around the world view the U.S.?
+
+Party ID is Q48: "In politics, as of today, do you consider yourself a
+Republican, a Democrat, or an independent?" Leaners (Q49) are not folded in.
+
+Study details:
+	Survey organization:	SSRS
+	Survey sponsor:		KFF
+	Field dates:		April 14-19, 2026
+	Sample:			National adult, n = 1,343
+	Party ID crosstab base:	n = 1,242 (respondents giving a party ID)
+	Margin of error:	+/- 3 percentage points at 95% confidence
+	Mode:			RDD cell and landline telephone (CATI) and web
+	DOI:			10.25940/ROPER-31125187
+
+Citation:
+	KFF. KFF Poll: April 2026 Health Tracking Poll, 2026 [Dataset].
+	Roper #31125187, Version 3. SSRS [producer]. Cornell University,
+	Ithaca, NY: Roper Center for Public Opinion Research [distributor].
