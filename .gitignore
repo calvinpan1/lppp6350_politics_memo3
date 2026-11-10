@@ -5,3 +5,7 @@
 /stata.log
 *.log
 !5_log_files/*.log
+
+# Python: CES microdata and Census shapefiles are too large for the repo
+python/*/rawdata/
+.ipynb_checkpoints/
