@@ -1,0 +1,79 @@
+SOURCE OF usaid_polls_2025.csv
+
+Transcribed 2026_1110 from Roper iPoll study records. Every 2025 survey in the
+iPoll archive that asked about shutting down USAID. The April 2026 KFF poll used
+for the main figure is not included here.
+
+Searched the Longstanding Methods and Recently Developed Methods collections on
+the keywords "USAID" and "Agency for International Development". The Washington
+Post item does not use either phrase and was found by reading that study's
+question list, so a keyword search alone misses it.
+
+	Roper #31122394	Ipsos Poll on Executive Orders
+					Feb 7-10, 2025; n = 1,013 national adults; web
+					"To what extent do you support or oppose the following
+					policies?...Efforts to dismantle the United States Agency
+					for International Development (USAID)."
+					Strongly support 22, somewhat support 15, somewhat oppose
+					24, strongly oppose 34, skipped 5
+
+	Roper #31122387	CNN Poll, conducted by SSRS
+					Feb 13-17, 2025; n = 1,206 national adults; phone and web
+					"Please indicate whether you think Donald Trump doing each
+					of the following is a good thing, a bad thing, or
+					neither...Attempting to shut down entire United States
+					government agencies, such as the US Agency for
+					International Development (USAID) and the Consumer
+					Financial Protection Bureau (CFPB)"
+					Good thing 28, bad thing 53, neither 19, no opinion *
+					NOTE: bundles USAID with the CFPB
+
+	Roper #31122388	Washington Post-Ipsos Poll
+					Feb 13-18, 2025; n = 2,601, this item asked of half the
+					sample (about 1,301); web
+					"Do you support or oppose each of the following?...Shutting
+					down the United States agency that provides humanitarian
+					aid to low-income countries"
+					Support 38, oppose 59, no opinion/skipped 3
+					NOTE: describes USAID rather than naming it
+
+	Roper #31122407	KFF Poll: February 2025 Health Tracking Poll on Health
+					Information and Trust, conducted by SSRS
+					Feb 18-25, 2025; n = 1,322 national adults; phone and web
+					"How much, if anything, have you heard about the Trump
+					administration's plans to significantly downsize USAID?"
+					A lot 37, some 25, a little 19, nothing at all 19
+					NOTE: awareness only. This study asks about the expected
+					consequences of the cuts (questions 10-14) but never asks
+					whether people approve of them, so it has no support or
+					oppose figure to report.
+
+	Roper #31122408	Reuters/Ipsos Pre-Joint Session Survey
+					Mar 3-4, 2025; n = 1,174 national adults; web
+					"To what extent do you support or oppose the following
+					policies?...Closing down the United States Agency for
+					International Development (USAID), the federal body that
+					administers civilian foreign aid"
+					Strongly support 22, somewhat support 19, somewhat oppose
+					21, strongly oppose 34, skipped 4
+
+	Roper #31122581	Pew Research Center: American Trends Panel Wave 166,
+					conducted by SSRS
+					Mar 24-30, 2025; n = 3,605 national adults; phone and web
+					"Do you approve of each of the following? The United
+					States...ending most United States Agency for International
+					Development (USAID) programs"
+					Strongly approve 22, somewhat approve 13, somewhat
+					disapprove 15, strongly disapprove 30, not sure 19
+
+COLUMN NOTES
+	support		Support, approve, or "good thing", combining strong and somewhat
+	oppose		Oppose, disapprove, or "bad thing", combining strong and somewhat
+	neither		"Neither", "not sure", "no opinion" or skipped, whichever the
+				poll offered. These are not the same quantity across polls:
+				CNN's 19 is a substantive "neither good nor bad", Pew's 19 is
+				"not sure", and the Ipsos and Reuters figures are item
+				nonresponse.
+	asked_of	Respondents asked this item, which is half the sample for the
+				Washington Post poll and the full sample elsewhere
+	comparable	1 if the poll asked a support or oppose question

@@ -1,0 +1,229 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/calvin/Library/Mobile Documents/com~apple~CloudDocs/Documents/Calvin/UVA/2026-27/LPPP 6350 Politics/stata/5_log_files/memo3_usaid_polling_average_log.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}10 Nov 2026, 14:29:40
+{txt}
+{com}. 
+. 
+. ********
+. *
+. *       1. Open data
+. *
+. ********
+. 
+.         **Every 2025 iPoll survey that asked about shutting down USAID. Question
+.         **wording, toplines and the search that found them are in
+.         **"${c -(}rawdatapath{c )-}usaid_polls_2025_source.txt".
+.         import delimited using "${c -(}rawdatapath{c )-}usaid_polls_2025.csv", ///
+>                 varnames(1) stringcols(2 3 4 5 12) clear
+{res}{txt}(encoding automatically selected: ISO-8859-1)
+{res}{text}(12 vars, 6 obs)
+
+{com}. 
+.         list roper sponsor support oppose neither comparable, noobs abbreviate(12)
+{txt}
+  {c TLC}{hline 10}{c -}{hline 21}{c -}{hline 9}{c -}{hline 8}{c -}{hline 9}{c -}{hline 12}{c TRC}
+  {c |} {res}   roper               sponsor   support   oppose   neither   comparable {txt}{c |}
+  {c LT}{hline 10}{c -}{hline 21}{c -}{hline 9}{c -}{hline 8}{c -}{hline 9}{c -}{hline 12}{c RT}
+  {c |} {res}31122394                 Ipsos        37       58         5            1 {txt}{c |}
+  {c |} {res}31122387                   CNN        28       53        19            1 {txt}{c |}
+  {c |} {res}31122388       Washington Post        38       59         3            1 {txt}{c |}
+  {c |} {res}31122407                   KFF         .        .         .            0 {txt}{c |}
+  {c |} {res}31122408               Reuters        41       55         4            1 {txt}{c |}
+  {c LT}{hline 10}{c -}{hline 21}{c -}{hline 9}{c -}{hline 8}{c -}{hline 9}{c -}{hline 12}{c RT}
+  {c |} {res}31122581   Pew Research Center        35       45        19            1 {txt}{c |}
+  {c BLC}{hline 10}{c -}{hline 21}{c -}{hline 9}{c -}{hline 8}{c -}{hline 9}{c -}{hline 12}{c BRC}
+
+{com}. 
+.         **Midpoint of the field period, for plotting
+.         gen start = date(start_date, "YMD")
+{txt}
+{com}.         gen end   = date(end_date, "YMD")
+{txt}
+{com}.         gen fielded = round((start + end) / 2)
+{txt}
+{com}.         format fielded %tdMon_dd
+{txt}
+{com}. 
+.         label variable support  "Support"
+{txt}
+{com}.         label variable oppose   "Oppose"
+{txt}
+{com}. 
+. 
+. ********
+. *
+. *       2. Confidence intervals and the across-poll average
+. *
+. ********
+. 
+.         **95 percent intervals on the proportion, using the number of respondents
+.         **actually asked the item. These assume simple random sampling, so they are a
+.         **little narrower than the design-based intervals the pollsters publish.
+.         **max() and min() ignore missing, so the bounds are built only where there is
+.         **an estimate; otherwise the KFF row would come out as 0 to 100
+.         foreach v in support oppose {c -(}
+{txt}  2{com}.                 gen `v'_se = 100 * sqrt((`v'/100) * (1 - `v'/100) / asked_of)
+{txt}  3{com}.                 gen `v'_lo = max(`v' - 1.96 * `v'_se, 0) if !missing(`v')
+{txt}  4{com}.                 gen `v'_hi = min(`v' + 1.96 * `v'_se, 100) if !missing(`v')
+{txt}  5{com}.         {c )-}
+{txt}(1 missing value generated)
+(1 missing value generated)
+(1 missing value generated)
+(1 missing value generated)
+(1 missing value generated)
+(1 missing value generated)
+
+{com}. 
+.         **The KFF poll measured awareness only and carries no support or oppose
+.         **figure, so the average runs over the five polls that asked one
+.         quietly summarize support if comparable == 1
+{txt}
+{com}.         glob mean_support = r(mean)
+{txt}
+{com}.         glob n_polls      = r(N)
+{txt}
+{com}. 
+.         quietly summarize oppose if comparable == 1
+{txt}
+{com}.         glob mean_oppose = r(mean)
+{txt}
+{com}. 
+.         di _n "Across-poll average over ${c -(}n_polls{c )-} polls:"
+{res}
+Across-poll average over 5 polls:
+{txt}
+{com}.         di "  Support " %4.1f ${c -(}mean_support{c )-} "   Oppose " %4.1f ${c -(}mean_oppose{c )-} ///
+>                 "   Net opposition " %4.1f (${c -(}mean_oppose{c )-} - ${c -(}mean_support{c )-})
+{res}  Support 35.8   Oppose 54.0   Net opposition 18.2
+{txt}
+{com}. 
+. 
+. ********
+. *
+. *       3. Figure of support and opposition over time
+. *
+. ********
+. 
+.         **Horizontal average lines are drawn as a two-point series so they span the
+.         **plotted window without hard-coding axis values
+.         quietly summarize fielded if comparable == 1
+{txt}
+{com}.         glob first_poll = r(min) - 5
+{txt}
+{com}.         glob last_poll  = r(max) + 5
+{txt}
+{com}. 
+.         **Two versions of the same plot: "full" carries its own title and note and
+.         **stands alone, "bare" is for documents that typeset their own caption
+.         foreach version in full bare {c -(}
+{txt}  2{com}. 
+.                 local thetitle ""
+{txt}  3{com}.                 local thenote  ""
+{txt}  4{com}. 
+.                 if "`version'" == "full" {c -(}
+{txt}  5{com}.                         local thetitle `"title("Opposition to shutting down USAID ran ahead of support" "in every 2025 poll", size(medsmall) span)"'
+{txt}  6{com}.                         local thenote  `"note("Each point is one national poll, with a 95 percent interval based on the number of respondents asked" "the item; these assume simple random sampling and so are slightly narrower than the intervals the" "pollsters publish. Dashed lines are the unweighted average across the ${c -(}n_polls{c )-} polls. Wording" "differs: CNN asks whether shutting down agencies such as USAID and the CFPB is a good or bad thing," "and the Washington Post describes the agency rather than naming it. A sixth 2025 poll, KFF's February" "Health Tracking Poll, measured awareness only and is not plotted." "Source: Roper iPoll, studies #31122394, #31122387, #31122388, #31122408 and #31122581.", size(vsmall) span)"'
+{txt}  7{com}.                 {c )-}
+{txt}  8{com}. 
+.                 twoway  (function y = ${c -(}mean_oppose{c )-}, range(${c -(}first_poll{c )-} ${c -(}last_poll{c )-})         ///
+>                                         lcolor("178 24 43") lpattern(dash) lwidth(medthin))                             ///
+>                                 (function y = ${c -(}mean_support{c )-}, range(${c -(}first_poll{c )-} ${c -(}last_poll{c )-})        ///
+>                                         lcolor("33 102 172") lpattern(dash) lwidth(medthin))                    ///
+>                                 (rcap oppose_lo oppose_hi fielded if comparable == 1,                           ///
+>                                         lcolor("178 24 43") lwidth(medthin) msize(small))                               ///
+>                                 (scatter oppose fielded if comparable == 1,                                                     ///
+>                                         mcolor("178 24 43") msymbol(O) msize(medium))                                   ///
+>                                 (rcap support_lo support_hi fielded if comparable == 1,                         ///
+>                                         lcolor("33 102 172") lwidth(medthin) msize(small))                              ///
+>                                 (scatter support fielded if comparable == 1,                                            ///
+>                                         mcolor("33 102 172") msymbol(O) msize(medium)),                                 ///
+>                         ytitle("Percent of respondents", size(small))                                                   ///
+>                         ylabel(0(10)70, angle(0) labsize(vsmall) grid glcolor(gs14))                    ///
+>                         yscale(range(0 70))                                                                                                             ///
+>                         xtitle("")                                                                                                                              ///
+>                         xlabel(${c -(}first_poll{c )-}(14)${c -(}last_poll{c )-}, format(%tdMon_dd) labsize(vsmall))        ///
+>                         `thetitle'                                                                                                                              ///
+>                         `thenote'                                                                                                                               ///
+>                         legend(order(4 "Oppose" 6 "Support" 1 "Average opposition" 2 "Average support") ///
+>                                 rows(1) size(vsmall) pos(6) ring(1) region(lstyle(none))                        ///
+>                                 symxsize(5) symysize(3))                                                                                        ///
+>                         graphregion(color(white)) plotregion(color(white))                                              ///
+>                         xsize(9) ysize(5.5)                                                                                                             ///
+>                         name(polling_`version', replace)
+{txt}  9{com}. 
+.                 if "`version'" == "full" {c -(}
+{txt} 10{com}.                         graph export "${c -(}tabsfigspath{c )-}memo3_usaid_polling_average.png", width(2400) replace
+{txt} 11{com}.                         graph export "${c -(}tabsfigspath{c )-}memo3_usaid_polling_average.pdf", replace
+{txt} 12{com}.                 {c )-}
+{txt} 13{com}.                 else {c -(}
+{txt} 14{com}.                         graph export "${c -(}tabsfigspath{c )-}memo3_usaid_polling_average_bare.png", width(2400) replace
+{txt} 15{com}.                 {c )-}
+{txt} 16{com}.         {c )-}
+{res}{txt}file {bf:/Users/calvin/Library/Mobile Documents/com~apple~CloudDocs/Documents/Calvin/UVA/2026-27/LPPP 6350 Politics/stata/6_tabsfigs/memo3_usaid_polling_average.png} written in PNG format
+{p 0 4 2}
+file {bf}
+/Users/calvin/Library/Mobile Documents/com~apple~CloudDocs/Documents/Calvin/UVA/2026-27/LPPP 6350 Politics/stata/6_tabsfigs/memo3_usaid_polling_average.pdf{rm}
+saved as
+PDF
+format
+{p_end}
+{res}{txt}(file {bf:/Users/calvin/Library/Mobile Documents/com~apple~CloudDocs/Documents/Calvin/UVA/2026-27/LPPP 6350 Politics/stata/6_tabsfigs/memo3_usaid_polling_average_bare.png} not found)
+{res}{txt}file {bf:/Users/calvin/Library/Mobile Documents/com~apple~CloudDocs/Documents/Calvin/UVA/2026-27/LPPP 6350 Politics/stata/6_tabsfigs/memo3_usaid_polling_average_bare.png} written in PNG format
+
+{com}. 
+. 
+. ********
+. *
+. *       4. Export the appendix table
+. *
+. ********
+. 
+.         keep roper sponsor organization start_date end_date sample_size asked_of        ///
+>                 support support_lo support_hi oppose oppose_lo oppose_hi neither        ///
+>                 comparable
+{txt}
+{com}.         order roper sponsor organization start_date end_date sample_size asked_of       ///
+>                 support support_lo support_hi oppose oppose_lo oppose_hi neither        ///
+>                 comparable
+{txt}
+{com}. 
+.         format support_lo support_hi oppose_lo oppose_hi %5.1f
+{txt}
+{com}. 
+.         list sponsor start_date support oppose neither, noobs abbreviate(12)
+{txt}
+  {c TLC}{hline 21}{c -}{hline 12}{c -}{hline 9}{c -}{hline 8}{c -}{hline 9}{c TRC}
+  {c |} {res}            sponsor   start_date   support   oppose   neither {txt}{c |}
+  {c LT}{hline 21}{c -}{hline 12}{c -}{hline 9}{c -}{hline 8}{c -}{hline 9}{c RT}
+  {c |} {res}              Ipsos   2025-02-07        37       58         5 {txt}{c |}
+  {c |} {res}                CNN   2025-02-13        28       53        19 {txt}{c |}
+  {c |} {res}    Washington Post   2025-02-13        38       59         3 {txt}{c |}
+  {c |} {res}                KFF   2025-02-18         .        .         . {txt}{c |}
+  {c |} {res}            Reuters   2025-03-03        41       55         4 {txt}{c |}
+  {c LT}{hline 21}{c -}{hline 12}{c -}{hline 9}{c -}{hline 8}{c -}{hline 9}{c RT}
+  {c |} {res}Pew Research Center   2025-03-24        35       45        19 {txt}{c |}
+  {c BLC}{hline 21}{c -}{hline 12}{c -}{hline 9}{c -}{hline 8}{c -}{hline 9}{c BRC}
+
+{com}. 
+.         export delimited using "${c -(}tabsfigspath{c )-}memo3_usaid_polls_2025.csv", replace
+{res}{txt}file {bf:/Users/calvin/Library/Mobile Documents/com~apple~CloudDocs/Documents/Calvin/UVA/2026-27/LPPP 6350 Politics/stata/6_tabsfigs/memo3_usaid_polls_2025.csv} saved
+
+{com}. 
+. 
+. ********
+. *
+. *       5. Close log file
+. *
+. ********
+. 
+.         log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/calvin/Library/Mobile Documents/com~apple~CloudDocs/Documents/Calvin/UVA/2026-27/LPPP 6350 Politics/stata/5_log_files/memo3_usaid_polling_average_log.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}10 Nov 2026, 14:29:44
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
