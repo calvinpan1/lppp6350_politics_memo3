@@ -19,9 +19,6 @@ archive, with 95 percent intervals and the across-poll average. A `_bare`
 version without the title and note is there for documents that typeset their
 own caption.
 
-`6_tabsfigs/memo3_appendix_usaid_polls.docx` -- appendix table of those six
-polls with full question wording, built from the same numbers.
-
 ## Running the repo
 
 Open `3_syntax/memo3_usaid_impact.do`, set the `classpath` global to wherever you
@@ -61,6 +58,8 @@ Washington Post-Ipsos (#31122388), KFF (#31122407), Reuters/Ipsos (#31122408)
 and Pew (#31122581). `2_raw_data/usaid_polls_2025_source.txt` gives the question
 wording, the toplines and the search that found them. Five asked a support or
 oppose question; the KFF poll measured awareness only.
+`6_tabsfigs/memo3_usaid_polls_2025.csv` holds the plotted numbers with their
+confidence bounds.
 
 The Virginia map uses the Cooperative Election Study 2025 Common Content
 (national survey of 17,000 adults run by YouGov, item `CC25_340g`), weighted
