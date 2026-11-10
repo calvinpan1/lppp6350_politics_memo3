@@ -1,9 +1,9 @@
 # LPPP 6350 Memo 3 -- Public opinion on the USAID cuts
 
-Figure and underlying numbers for Memo 3 (Considering the Public), on where the
-public stands on the 2025 shutdown of USAID and the cuts to U.S. foreign aid.
+Figure and underlying numbers for Politics of Public Policy Memo 3 on public opinion
+on my topic, the 2025 shutdown of USAID and the cuts to U.S. foreign aid.
 
-## What it produces
+## What this repo produces
 
 `6_tabsfigs/memo3_usaid_impact.png` -- stacked bars showing whether U.S. adults
 think the foreign aid and USAID changes had a positive, negative or no impact on
@@ -13,7 +13,7 @@ three outcomes, split by party identification.
 for the 2025 cut of $8.3B in foreign aid and $1.1B for NPR/PBS across Virginia's
 congressional districts, with a table comparing VA-1, Virginia and the U.S.
 
-## Running it
+## Running the repo
 
 Open `3_syntax/memo3_usaid_impact.do`, set the `classpath` global to wherever you
 cloned this, and run it. Stata 18, no user-written packages.
