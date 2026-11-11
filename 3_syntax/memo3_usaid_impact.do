@@ -110,8 +110,8 @@
 	**positive. Don't know and refused run from 0 to 1 percent and are left out,
 	**so a few bars stop at 99 rather than 100.
 	graph bar (asis) negative no_impact positive,							///
-		over(party, label(labsize(vsmall) angle(45)))						///
-		over(topic, label(labsize(small)) gap(90))							///
+		over(party, label(labsize(medsmall) angle(45)))						///
+		over(topic, label(labsize(medium)) gap(90))							///
 		stack																///
 		bar(1, color("178 24 43"))											///
 		bar(2, color("150 150 150"))										///
@@ -122,15 +122,14 @@
 		yscale(range(0 100))												///
 		title("In your opinion, what kind of impact have changes to"		///
 			"USAID made to...", size(medsmall) span)						///
-		note("Source: KFF Poll, April 2026 Health Tracking Poll (Roper #31125187), questions 42, 44 and 45,"	///
-			"crossed by party identification (question 48). Fielded by SSRS, April 14-19, 2026; national"	///
-			"sample of 1,343 U.S. adults, of whom 1,242 give a party ID. Weighted percentages, margin of"	///
-			"error +/- 3 points. Don't know and refused, 1 percent or less in every group, are not shown.",	///
-			size(vsmall) span)												///
-		legend(order(3 2 1) rows(1) size(vsmall) pos(6) ring(1)				///
+		note("Source: KFF Poll, April 2026 Health Tracking Poll (Roper #31125187), questions 42, 44 and 45, crossed by party ID (question 48)."	///
+			"Fielded by SSRS, April 14-19, 2026; national sample of 1,343 U.S. adults, of whom 1,242 give a party ID. Weighted percentages,"		///
+			"margin of error +/- 3 points. Don't know and refused, 1 percent or less in every group, are not shown.",								///
+			size(small) span)												///
+		legend(order(3 2 1) rows(1) size(medsmall) pos(6) ring(1)			///
 			region(lstyle(none)) symxsize(4) symysize(3))					///
 		graphregion(color(white)) plotregion(color(white))					///
-		xsize(9.5) ysize(5.5)												///
+		xsize(10.5) ysize(6)												///
 		name(usaid_impact, replace)
 
 	graph export "${tabsfigspath}memo3_usaid_impact.png", width(2400) replace

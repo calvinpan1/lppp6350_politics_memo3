@@ -11,7 +11,7 @@ three outcomes, split by party identification.
 
 `python/ces25_va_aid_cut_map/output/fig1_va_aid_cut_map.png` -- map of support
 for the 2025 cut of $8.3B in foreign aid and $1.1B for NPR/PBS across Virginia's
-congressional districts, with a table comparing VA-1, Virginia and the U.S.
+congressional districts, with a table comparing VA-5, Virginia and the U.S.
 
 `6_tabsfigs/memo3_usaid_polling_average.png` -- support for and opposition to
 shutting down USAID across the six 2025 national polls in the Roper iPoll
